@@ -110,3 +110,5 @@ docker compose up -d
 * Síguelo para actualizaciones educativas y profesionales
 
 > *"Hecho en México 🇲🇽 con modularidad, consciencia y propósito."*
+"proyecto revisado por aldo"
+

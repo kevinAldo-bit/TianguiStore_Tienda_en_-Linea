@@ -210,3 +210,4 @@ volumes:
 networks:
   tianguistore-net:
     driver: bridge
+    //revisado por aldo 
