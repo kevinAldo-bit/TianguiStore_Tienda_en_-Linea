@@ -1,4 +1,5 @@
 <!-- 📁 checkout.html - Confirmación de pedido | TianguiStore -->
+
 <!DOCTYPE html>
 <html lang="es-MX">
 <head>
@@ -12,29 +13,330 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
   <!-- Google Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <!-- Estilos personalizados -->
   <link rel="stylesheet" href="estilo/main.css" />
+
+  <style>
+    * {
+      font-family: 'Space Mono', monospace;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1629 100%);
+      min-height: 100vh;
+      color: #e0f7fa;
+    }
+
+    main {
+      padding: 60px 20px !important;
+      min-height: 80vh;
+      background: rgba(15, 22, 41, 0.4);
+    }
+
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 48px;
+      font-weight: 900;
+      color: #00bcd4;
+      text-shadow: 0 0 20px #00bcd4, 0 0 40px #0288d1;
+      letter-spacing: 3px;
+      margin-bottom: 15px;
+      animation: pulse-title 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-title {
+      0%, 100% { text-shadow: 0 0 20px #00bcd4, 0 0 40px #0288d1; }
+      50% { text-shadow: 0 0 30px #00bcd4, 0 0 60px #0288d1; }
+    }
+
+    header p {
+      color: #b3e5fc;
+      font-size: 16px;
+      letter-spacing: 1px;
+      margin-bottom: 40px;
+    }
+
+    .formulario-wrapper {
+      background: linear-gradient(135deg, rgba(0, 188, 212, 0.08) 0%, rgba(2, 136, 209, 0.08) 100%);
+      border: 2px solid #00bcd4;
+      border-radius: 15px;
+      box-shadow: 0 0 30px rgba(0, 188, 212, 0.3), inset 0 0 20px rgba(0, 188, 212, 0.05);
+      backdrop-filter: blur(10px);
+      padding: 40px !important;
+      animation: fadeInUp 0.6s ease;
+      transition: all 0.3s ease;
+    }
+
+    .formulario-wrapper:hover {
+      box-shadow: 0 0 40px rgba(0, 188, 212, 0.5), inset 0 0 30px rgba(0, 188, 212, 0.1);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .formulario-wrapper h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #00bcd4;
+      text-shadow: 0 0 15px #00bcd4;
+      letter-spacing: 2px;
+      margin-bottom: 30px;
+      border-bottom: 2px solid #00bcd4;
+      padding-bottom: 15px;
+    }
+
+    .input-field {
+      position: relative;
+      margin-top: 25px !important;
+      margin-bottom: 20px !important;
+    }
+
+    .input-field input,
+    .input-field textarea,
+    .input-field select {
+      color: #e0f7fa !important;
+      border-bottom: 2px solid #00bcd4 !important;
+      background-color: rgba(15, 22, 41, 0.5) !important;
+      font-family: 'Space Mono', monospace;
+      transition: all 0.3s ease;
+    }
+
+    .input-field input:focus,
+    .input-field textarea:focus,
+    .input-field select:focus {
+      border-bottom: 2px solid #0288d1 !important;
+      box-shadow: 0 0 15px rgba(0, 188, 212, 0.4), inset 0 0 10px rgba(0, 188, 212, 0.1);
+      background-color: rgba(15, 22, 41, 0.7) !important;
+    }
+
+    .input-field label {
+      color: #b3e5fc !important;
+      font-size: 14px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
+
+    .input-field label.active {
+      color: #00bcd4 !important;
+      text-shadow: 0 0 8px #00bcd4;
+    }
+
+    .helper-text {
+      color: #b3e5fc !important;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+      margin-top: 5px;
+      display: block;
+    }
+
+    .materialize-textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .browser-default {
+      border: 2px solid #00bcd4 !important;
+      border-radius: 8px !important;
+      padding: 10px 15px !important;
+      background-color: rgba(15, 22, 41, 0.7) !important;
+      color: #e0f7fa !important;
+      font-family: 'Space Mono', monospace;
+      transition: all 0.3s ease;
+    }
+
+    .browser-default:focus {
+      border-color: #0288d1 !important;
+      box-shadow: 0 0 15px rgba(0, 188, 212, 0.4);
+      background-color: rgba(15, 22, 41, 0.9) !important;
+    }
+
+    .browser-default option {
+      background-color: #1a1f3a;
+      color: #e0f7fa;
+    }
+
+    .btn {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-radius: 50px;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      box-shadow: 0 0 20px rgba(0, 188, 212, 0.5);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 40px rgba(0, 188, 212, 0.8), 0 0 60px rgba(0, 188, 212, 0.4);
+    }
+
+    .btn.teal.darken-1 {
+      background: linear-gradient(135deg, #00bcd4 0%, #0288d1 100%) !important;
+      color: #001a33 !important;
+      box-shadow: 0 0 20px rgba(0, 188, 212, 0.5);
+    }
+
+    .btn.teal.darken-1:hover {
+      background: linear-gradient(135deg, #0288d1 0%, #0277bd 100%) !important;
+      box-shadow: 0 0 40px rgba(0, 188, 212, 0.8);
+    }
+
+    .btn.teal.darken-1:active {
+      transform: translateY(-1px);
+    }
+
+    .full-width {
+      width: 100%;
+      display: block;
+      padding: 15px 20px !important;
+      font-size: 18px;
+    }
+
+    .container {
+      max-width: 1000px;
+    }
+
+    .row {
+      margin-bottom: 20px;
+    }
+
+    .section {
+      padding-top: 20px !important;
+    }
+
+    .input-field input.invalid,
+    .input-field textarea.invalid {
+      border-bottom: 2px solid #e74c3c !important;
+    }
+
+    .input-field input.valid,
+    .input-field textarea.valid {
+      border-bottom: 2px solid #27ae60 !important;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .intro-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: #00bcd4;
+      text-shadow: 0 0 10px #00bcd4;
+      letter-spacing: 2px;
+    }
+
+    .form-check {
+      margin-top: 20px;
+      padding: 15px;
+      background: rgba(0, 188, 212, 0.1);
+      border-radius: 8px;
+      border-left: 3px solid #00bcd4;
+    }
+
+    .form-check-input {
+      border: 2px solid #00bcd4;
+      border-radius: 4px;
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .form-check-input:checked {
+      background-color: #00bcd4;
+      border-color: #0288d1;
+    }
+
+    .form-check-label {
+      color: #b3e5fc !important;
+      margin-left: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .form-check-label a {
+      color: #00bcd4;
+      text-decoration: underline;
+      transition: all 0.3s ease;
+    }
+
+    .form-check-label a:hover {
+      color: #0288d1;
+      text-shadow: 0 0 10px #00bcd4;
+    }
+
+    .prefix {
+      color: #00bcd4 !important;
+      text-shadow: 0 0 10px #00bcd4;
+      font-size: 18px !important;
+    }
+
+    .white-text {
+      color: #e0f7fa !important;
+    }
+
+    .mb-5 {
+      margin-bottom: 3rem !important;
+    }
+
+    .mb-3 {
+      margin-bottom: 1rem !important;
+    }
+
+    .me-2 {
+      margin-right: 0.5rem !important;
+    }
+
+    .mt-4 {
+      margin-top: 1.5rem !important;
+    }
+
+    .offset-m1 {
+      margin-left: 8.33333333% !important;
+    }
+
+    .offset-l2 {
+      margin-left: 16.66666667% !important;
+    }
+
+    .z-depth-3 {
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+  </style>
 </head>
 
-<body class="grey darken-4 white-text">
+<body class="dark-theme">
 
   <!-- Navbar dinámico -->
   <div id="navbar-container"></div>
 
   <!-- Contenido principal -->
-  <main class="container py-5">
-    <header class="center-align mb-4">
-      <h1 class="teal-text text-lighten-2">
-        <i class="fas fa-map-marker-alt me-2"></i> Confirmación de Pedido
+  <main class="container section">
+    <header class="center-align">
+      <h1>
+        <i class="fas fa-map-marker-alt"></i> CONFIRMACIÓN DE PEDIDO
       </h1>
-      <p class="flow-text grey-text text-lighten-1">
-        Ingresa los datos necesarios para completar tu compra.
-      </p>
+      <p>Ingresa los datos necesarios para completar tu compra</p>
     </header>
 
     <section class="row">
       <div class="col s12 m10 offset-m1 l8 offset-l2">
-        <div class="formulario-wrapper glass-card">
+        <div class="formulario-wrapper z-depth-3">
           <h2 class="intro-title">
             <i class="fas fa-truck"></i> Dirección de Envío
           </h2>
@@ -43,39 +345,60 @@
 
             <!-- Dirección -->
             <div class="input-field">
+              <i class="fas fa-map-pin prefix"></i>
               <input id="direccion_entrega" name="direccion_entrega" type="text" class="validate white-text" required autocomplete="street-address" maxlength="255">
-              <label for="direccion_entrega">📍 Dirección completa</label>
+              <label for="direccion_entrega">Dirección completa</label>
+              <span class="helper-text">Incluye calle, número y apartamento</span>
             </div>
 
+            <!-- Teléfono -->
+            <div class="input-field">
+              <i class="fas fa-phone prefix"></i>
+              <input id="telefono" name="telefono" type="tel" class="validate white-text" required autocomplete="tel" maxlength="15">
+              <label for="telefono">Teléfono de contacto</label>
+              <span class="helper-text">Para confirmación de envío</span>
+            </div>
 
             <!-- Método de Pago -->
             <div class="input-field">
-              <select id="metodo_pago" name="metodo_pago" class="browser-default white-text grey darken-4" required>
-                <option value="" disabled selected>💳 Selecciona un método de pago</option>
-                <option value="efectivo">Efectivo</option>
-                <option value="tarjeta">Tarjeta de Crédito/Débito</option>
-                <option value="transferencia">Transferencia Bancaria</option>
+              <i class="fas fa-credit-card prefix"></i>
+              <select id="metodo_pago" name="metodo_pago" class="browser-default white-text" required>
+                <option value="" disabled selected>Selecciona un método de pago</option>
+                <option value="tarjeta">💳 Tarjeta de Crédito/Débito</option>
+                <option value="transferencia">🏦 Transferencia Bancaria</option>
+                <option value="efectivo">💵 Efectivo en Entrega</option>
+                <option value="paypal">🅿️ PayPal</option>
               </select>
-              <span class="helper-text amber-text text-lighten-3"></span>
+              <span class="helper-text">Elige la forma de pago</span>
             </div>
 
             <!-- Cupón -->
             <div class="input-field">
-              <input id="cupon" name="cupon" type="text" class="validate white-text" maxlength="30" placeholder="Descuento promocional (opcional)">
-              <label for="cupon">🎟️ Código de cupón</label>
-              <span class="helper-text grey-text text-lighten-1">Máximo 30 caracteres</span>
+              <i class="fas fa-ticket-alt prefix"></i>
+              <input id="cupon" name="cupon" type="text" class="validate white-text" maxlength="30" placeholder="Código promocional (opcional)">
+              <label for="cupon">Código de cupón</label>
+              <span class="helper-text">Máximo 30 caracteres</span>
             </div>
 
             <!-- Comentarios -->
             <div class="input-field">
+              <i class="fas fa-comment prefix" style="margin-top: 10px;"></i>
               <textarea id="comentarios" name="comentarios" class="materialize-textarea white-text" maxlength="300" placeholder="Instrucciones especiales, referencias o avisos."></textarea>
-              <label for="comentarios">📝 Comentarios adicionales</label>
-              <span class="helper-text grey-text text-lighten-1">Opcional</span>
+              <label for="comentarios">Comentarios adicionales</label>
+              <span class="helper-text">Máximo 300 caracteres</span>
             </div>
 
-            <!-- Botón -->
-            <button type="submit" class="btn waves-effect teal darken-1 full-width">
-              <i class="material-icons left">check_circle</i> Realizar Pedido
+            <!-- Términos y condiciones -->
+            <div class="form-check mt-4">
+              <input type="checkbox" id="terminos" name="terminos" class="form-check-input" required>
+              <label class="form-check-label white-text" for="terminos">
+                Acepto los <a href="#" target="_blank">términos y condiciones</a>
+              </label>
+            </div>
+
+            <!-- Botón de envío -->
+            <button type="submit" class="btn waves-effect teal darken-1 full-width mt-4">
+              <i class="fas fa-credit-card"></i> Confirmar Pedido y Pagar
             </button>
           </form>
         </div>

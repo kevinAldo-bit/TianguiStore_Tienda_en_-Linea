@@ -9,8 +9,125 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet" />
   <!-- FontAwesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" crossorigin="anonymous" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <!-- Estilos personalizados -->
   <link rel="stylesheet" href="estilo/main.css" />
+
+  <style>
+    * {
+      font-family: 'Space Mono', monospace;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1629 100%);
+      min-height: 100vh;
+      color: #e0f7fa;
+    }
+
+    #seccion-principal {
+      padding: 60px 20px !important;
+      background: rgba(15, 22, 41, 0.4);
+    }
+
+    #seccion-principal h4 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 42px;
+      font-weight: 900;
+      color: #00bcd4;
+      text-shadow: 0 0 20px #00bcd4, 0 0 40px #0288d1;
+      letter-spacing: 5px;
+      margin-bottom: 30px;
+      animation: pulse-title 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-title {
+      0%, 100% { text-shadow: 0 0 20px #00bcd4, 0 0 40px #0288d1; }
+      50% { text-shadow: 0 0 30px #00bcd4, 0 0 60px #0288d1; }
+    }
+
+    #seccion-principal p {
+      font-size: 16px;
+      color: #b3e5fc;
+      letter-spacing: 2px;
+      margin-bottom: 50px;
+    }
+
+    .menu-tarjeta {
+      display: flex !important;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, rgba(0, 188, 212, 0.1) 0%, rgba(2, 136, 209, 0.1) 100%);
+      border: 2px solid #00bcd4;
+      border-radius: 15px;
+      text-decoration: none !important;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      box-shadow: 0 0 20px rgba(0, 188, 212, 0.3), inset 0 0 15px rgba(0, 188, 212, 0.05);
+      backdrop-filter: blur(10px);
+      margin: 15px 0;
+      cursor: pointer;
+      animation: fadeInUp 0.6s ease;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .menu-tarjeta i {
+      color: #00bcd4;
+      text-shadow: 0 0 15px #00bcd4;
+      margin-bottom: 15px;
+      transition: all 0.3s ease;
+    }
+
+    .menu-tarjeta span {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #e0f7fa;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-shadow: 0 0 10px rgba(0, 188, 212, 0.5);
+    }
+
+    .menu-tarjeta:hover {
+      background: linear-gradient(135deg, rgba(0, 188, 212, 0.25) 0%, rgba(2, 136, 209, 0.25) 100%);
+      border-color: #0288d1;
+      box-shadow: 0 0 40px rgba(0, 188, 212, 0.6), 
+                  inset 0 0 30px rgba(0, 188, 212, 0.15),
+                  0 0 80px rgba(0, 188, 212, 0.4);
+      transform: translateY(-8px) scale(1.05);
+    }
+
+    .menu-tarjeta:hover i {
+      text-shadow: 0 0 25px #00bcd4, 0 0 50px #0288d1;
+      transform: scale(1.2) rotate(5deg);
+    }
+
+    .menu-tarjeta:hover span {
+      text-shadow: 0 0 20px rgba(0, 188, 212, 0.8), 0 0 40px rgba(2, 136, 209, 0.5);
+      color: #ffffff;
+    }
+
+    .container {
+      max-width: 1200px;
+    }
+
+    .row {
+      margin-bottom: 20px;
+    }
+  </style>
 </head>
 
 <body class="dark-theme">
@@ -19,10 +136,10 @@
   <div id="navbar-container"></div>
 
   <!-- 🧠 Panel de Administración -->
-  <main class="section" id="seccion-principal">
+  <main class="section animate__animated animate__fadeIn" id="seccion-principal">
     <div class="container">
-      <h4 class="center-align amber-text text-accent-3">Panel de Administración</h4>
-      <p class="grey-text text-lighten-2 center-align">Selecciona una sección para comenzar</p>
+      <h4 class="center-align">⚙️ PANEL DE ADMINISTRACIÓN</h4>
+      <p class="center-align">Selecciona una sección para comenzar</p>
 
       <div class="row">
 

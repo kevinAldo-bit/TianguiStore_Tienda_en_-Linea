@@ -13,120 +13,331 @@
   <!-- FontAwesome para íconos -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
   
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
   <!-- Estilos personalizados -->
   <link rel="stylesheet" href="./estilo/estilos.css" />
+
+  <style>
+    * {
+      font-family: 'Space Mono', monospace;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1629 100%);
+      min-height: 100vh;
+      color: #e0f7fa;
+    }
+
+    main {
+      padding: 60px 20px !important;
+      min-height: 80vh;
+      background: rgba(15, 22, 41, 0.4);
+    }
+
+    main h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 48px;
+      font-weight: 900;
+      color: #00bcd4;
+      text-shadow: 0 0 20px #00bcd4, 0 0 40px #0288d1;
+      letter-spacing: 3px;
+      margin-bottom: 40px;
+      animation: pulse-title 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-title {
+      0%, 100% { text-shadow: 0 0 20px #00bcd4, 0 0 40px #0288d1; }
+      50% { text-shadow: 0 0 30px #00bcd4, 0 0 60px #0288d1; }
+    }
+
+    #form-agregar-producto {
+      background: linear-gradient(135deg, rgba(0, 188, 212, 0.08) 0%, rgba(2, 136, 209, 0.08) 100%);
+      border: 2px solid #00bcd4;
+      border-radius: 15px;
+      box-shadow: 0 0 30px rgba(0, 188, 212, 0.3), inset 0 0 20px rgba(0, 188, 212, 0.05);
+      backdrop-filter: blur(10px);
+      padding: 40px !important;
+      animation: fadeInUp 0.6s ease;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .input-field {
+      position: relative;
+      margin-top: 20px !important;
+    }
+
+    .input-field i {
+      color: #00bcd4;
+      text-shadow: 0 0 10px #00bcd4;
+      font-size: 18px;
+    }
+
+    .input-field input,
+    .input-field textarea,
+    .input-field select {
+      color: #e0f7fa !important;
+      border-bottom: 2px solid #00bcd4 !important;
+      background-color: rgba(15, 22, 41, 0.5) !important;
+      font-family: 'Space Mono', monospace;
+      transition: all 0.3s ease;
+    }
+
+    .input-field input:focus,
+    .input-field textarea:focus,
+    .input-field select:focus {
+      border-bottom: 2px solid #0288d1 !important;
+      box-shadow: 0 0 15px rgba(0, 188, 212, 0.4), inset 0 0 10px rgba(0, 188, 212, 0.1);
+      background-color: rgba(15, 22, 41, 0.7) !important;
+    }
+
+    .input-field label {
+      color: #b3e5fc !important;
+      font-size: 14px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .input-field label.active {
+      color: #00bcd4 !important;
+      text-shadow: 0 0 8px #00bcd4;
+    }
+
+    .form-control,
+    .form-select {
+      color: #e0f7fa !important;
+      background-color: rgba(15, 22, 41, 0.6) !important;
+      border: 1px solid #00bcd4 !important;
+      border-radius: 8px !important;
+      font-family: 'Space Mono', monospace;
+      transition: all 0.3s ease;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+      border: 1px solid #0288d1 !important;
+      box-shadow: 0 0 15px rgba(0, 188, 212, 0.4);
+      background-color: rgba(15, 22, 41, 0.8) !important;
+    }
+
+    .form-label {
+      color: #b3e5fc !important;
+      font-size: 14px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 700;
+      text-shadow: 0 0 5px rgba(0, 188, 212, 0.3);
+    }
+
+    .form-check-input {
+      border: 2px solid #00bcd4 !important;
+      background-color: rgba(15, 22, 41, 0.8) !important;
+      transition: all 0.3s ease;
+    }
+
+    .form-check-input:checked {
+      background-color: #00bcd4 !important;
+      border-color: #0288d1 !important;
+      box-shadow: 0 0 10px rgba(0, 188, 212, 0.5);
+    }
+
+    .form-check-label {
+      color: #b3e5fc !important;
+      font-size: 14px;
+      letter-spacing: 1px;
+      margin-left: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .form-check-input:checked ~ .form-check-label {
+      color: #00bcd4 !important;
+      text-shadow: 0 0 8px #00bcd4;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #00bcd4 0%, #0288d1 100%) !important;
+      color: #001a33 !important;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      letter-spacing: 2px;
+      border-radius: 50px;
+      border: none;
+      padding: 12px 30px !important;
+      box-shadow: 0 0 20px rgba(0, 188, 212, 0.5);
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      text-transform: uppercase;
+      font-size: 16px;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #0288d1 0%, #0277bd 100%) !important;
+      box-shadow: 0 0 40px rgba(0, 188, 212, 0.8), 0 0 60px rgba(0, 188, 212, 0.4);
+      transform: translateY(-3px) scale(1.02);
+    }
+
+    .btn-primary:active {
+      transform: translateY(-1px) scale(1);
+    }
+
+    #preview-imagenes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 15px;
+    }
+
+    #preview-imagenes img {
+      width: 100px;
+      height: 100px;
+      border: 2px solid #00bcd4;
+      border-radius: 8px;
+      object-fit: cover;
+      box-shadow: 0 0 15px rgba(0, 188, 212, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    #preview-imagenes img:hover {
+      box-shadow: 0 0 25px rgba(0, 188, 212, 0.6);
+      transform: scale(1.05);
+    }
+
+    #preview-modelo3d {
+      border: 2px solid #00bcd4;
+      border-radius: 8px;
+      padding: 15px;
+      background: rgba(15, 22, 41, 0.5);
+      box-shadow: 0 0 15px rgba(0, 188, 212, 0.2);
+    }
+
+    .row {
+      margin-bottom: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+    }
+  </style>
 </head>
 
-<body class="bg-light">
+<body class="dark-theme">
 
   <!-- Navbar: Cargada dinámicamente -->
   <div id="navbar-container"></div>
 
   <!-- Contenido principal -->
-  <main class="container my-5">
-    <section class="row justify-content-center">
-      <div class="col-lg-8">
-        <h1 class="text-center mb-4">
-          <i class="fas fa-plus-circle me-2"></i> Agregar Nuevo Producto
-        </h1>
+  <main class="section animate__animated animate__fadeIn">
+    <div class="container">
+      <h1 class="center-align">
+        <i class="fas fa-plus-circle"></i> AGREGAR NUEVO PRODUCTO
+      </h1>
 
-        <!-- Formulario para agregar un producto -->
-        <form id="form-agregar-producto" class="card p-4 shadow-sm" enctype="multipart/form-data" novalidate>
-          <!-- Nombre del producto -->
-          <div class="input-field mb-3">
-            <i class="fas fa-tag prefix"></i>
-            <input type="text" class="form-control" id="nombre" maxlength="100" required />
-            <label for="nombre">Nombre del producto</label>
-          </div>
+      <!-- Formulario para agregar un producto -->
+      <form id="form-agregar-producto" enctype="multipart/form-data" novalidate>
+        <!-- Nombre del producto -->
+        <div class="input-field mb-3">
+          <i class="fas fa-tag prefix"></i>
+          <input type="text" class="form-control" id="nombre" maxlength="100" required />
+          <label for="nombre">Nombre del producto</label>
+        </div>
 
-          <!-- Descripción del producto -->
-          <div class="input-field mb-3">
-            <i class="fas fa-file-alt prefix"></i>
-            <textarea class="materialize-textarea" id="descripcion" rows="3" required></textarea>
-            <label for="descripcion">Descripción</label>
-          </div>
+        <!-- Descripción del producto -->
+        <div class="input-field mb-3">
+          <i class="fas fa-file-alt prefix"></i>
+          <textarea class="materialize-textarea" id="descripcion" rows="3" required></textarea>
+          <label for="descripcion">Descripción</label>
+        </div>
 
-          <!-- Precio y Stock -->
-          <div class="row g-3">
-            <div class="col-md-6">
-              <div class="input-field">
-                <i class="fas fa-money-bill-wave prefix"></i>
-                <input type="number" class="form-control" id="precio" step="0.01" min="0" required />
-                <label for="precio">Precio ($MXN)</label>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="input-field">
-                <i class="fas fa-boxes prefix"></i>
-                <input type="number" class="form-control" id="stock" min="0" required />
-                <label for="stock">Stock disponible</label>
-              </div>
+        <!-- Precio y Stock -->
+        <div class="row g-3">
+          <div class="col-md-6">
+            <div class="input-field">
+              <i class="fas fa-money-bill-wave prefix"></i>
+              <input type="number" class="form-control" id="precio" step="0.01" min="0" required />
+              <label for="precio">Precio ($MXN)</label>
             </div>
           </div>
-
-          <!-- Selección de categoría y marca -->
-          <div class="row g-3 mt-3">
-            <div class="col-md-6">
-              <div class="input-field">
-                <i class="fas fa-cogs prefix"></i>
-                <select class="form-select" id="categoria_id" required></select>
-                <label for="categoria_id">Categoría</label>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="input-field">
-                <i class="fas fa-trademark prefix"></i>
-                <select class="form-select" id="marca_id" required></select>
-                <label for="marca_id">Marca</label>
-              </div>
+          <div class="col-md-6">
+            <div class="input-field">
+              <i class="fas fa-boxes prefix"></i>
+              <input type="number" class="form-control" id="stock" min="0" required />
+              <label for="stock">Stock disponible</label>
             </div>
           </div>
+        </div>
 
-          <!-- Carga de imágenes del producto -->
-          <div class="mt-3">
-            <label for="imagenes" class="form-label">Imágenes del producto</label>
-            <input type="file" class="form-control" id="imagenes" accept="image/*" multiple required />
-            <div id="preview-imagenes" class="mt-2 d-flex flex-wrap gap-2"></div>
+        <!-- Selección de categoría y marca -->
+        <div class="row g-3 mt-3">
+          <div class="col-md-6">
+            <div class="input-field">
+              <i class="fas fa-cogs prefix"></i>
+              <select class="form-select" id="categoria_id" required></select>
+              <label for="categoria_id">Categoría</label>
+            </div>
           </div>
+          <div class="col-md-6">
+            <div class="input-field">
+              <i class="fas fa-trademark prefix"></i>
+              <select class="form-select" id="marca_id" required></select>
+              <label for="marca_id">Marca</label>
+            </div>
+          </div>
+        </div>
 
-          <!-- Carga de modelo 3D (opcional) -->
-          <div class="mt-3">
-            <label for="modelo3d" class="form-label">Modelo 3D (opcional)</label>
-            <input type="file" class="form-control" id="modelo3d" accept=".glb,.gltf,.obj,.fbx,.stl" />
-            <div id="preview-modelo3d" class="mt-3"></div>
-          </div>
+        <!-- Carga de imágenes del producto -->
+        <div class="mt-3">
+          <label for="imagenes" class="form-label">Imágenes del producto</label>
+          <input type="file" class="form-control" id="imagenes" accept="image/*" multiple required />
+          <div id="preview-imagenes" class="mt-2 d-flex flex-wrap gap-2"></div>
+        </div>
 
-          <!-- Tipo de pago permitido -->
-          <div class="mt-3">
-            <label for="tipo_pago" class="form-label">Tipo de pago permitido</label>
-            <select class="form-select" id="tipo_pago" required>
-              <option value="efectivo">Efectivo</option>
-              <option value="crédito">Crédito</option>
-              <option value="débito">Débito</option>
-              <option value="transferencia">Transferencia</option>
-            </select>
-          </div>
+        <!-- Carga de modelo 3D (opcional) -->
+        <div class="mt-3">
+          <label for="modelo3d" class="form-label">Modelo 3D (opcional)</label>
+          <input type="file" class="form-control" id="modelo3d" accept=".glb,.gltf,.obj,.fbx,.stl" />
+          <div id="preview-modelo3d" class="mt-3"></div>
+        </div>
 
-          <!-- Opciones adicionales -->
-          <div class="form-check form-switch mt-4">
-            <input class="form-check-input" type="checkbox" id="publicado" />
-            <label class="form-check-label" for="publicado">¿Publicar inmediatamente?</label>
-          </div>
+        <!-- Tipo de pago permitido -->
+        <div class="mt-3">
+          <label for="tipo_pago" class="form-label">Tipo de pago permitido</label>
+          <select class="form-select" id="tipo_pago" required>
+            <option value="efectivo">Efectivo</option>
+            <option value="crédito">Crédito</option>
+            <option value="débito">Débito</option>
+            <option value="transferencia">Transferencia</option>
+          </select>
+        </div>
 
-          <div class="form-check form-switch mt-2">
-            <input class="form-check-input" type="checkbox" id="meses_sin_intereses" />
-            <label class="form-check-label" for="meses_sin_intereses">Meses sin intereses</label>
-          </div>
+        <!-- Opciones adicionales -->
+        <div class="form-check form-switch mt-4">
+          <input class="form-check-input" type="checkbox" id="publicado" />
+          <label class="form-check-label" for="publicado">¿Publicar inmediatamente?</label>
+        </div>
 
-          <!-- Botón para guardar el producto -->
-          <div class="d-grid mt-4">
-            <button type="submit" class="btn btn-primary">
-              <i class="fas fa-save me-2"></i>Guardar Producto
-            </button>
-          </div>
-        </form>
-      </div>
-    </section>
+        <div class="form-check form-switch mt-2">
+          <input class="form-check-input" type="checkbox" id="meses_sin_intereses" />
+          <label class="form-check-label" for="meses_sin_intereses">Meses sin intereses</label>
+        </div>
+
+        <!-- Botón para guardar el producto -->
+        <div class="d-grid mt-4">
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-save me-2"></i>Guardar Producto
+          </button>
+        </div>
+      </form>
+    </div>
   </main>
 
   <!-- Contenedor para notificaciones tipo toast -->

@@ -12,8 +12,219 @@
   <!-- FontAwesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
   <!-- Estilos personalizados -->
   <link rel="stylesheet" href="estilo/main.css" />
+
+  <style>
+    * {
+      font-family: 'Space Mono', monospace;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1629 100%);
+      min-height: 100vh;
+      color: #e0f7fa;
+    }
+
+    main {
+      padding: 60px 20px !important;
+      min-height: 80vh;
+      background: rgba(15, 22, 41, 0.4);
+    }
+
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 48px;
+      font-weight: 900;
+      color: #00bcd4;
+      text-shadow: 0 0 20px #00bcd4, 0 0 40px #0288d1;
+      letter-spacing: 3px;
+      margin-bottom: 15px;
+      animation: pulse-title 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-title {
+      0%, 100% { text-shadow: 0 0 20px #00bcd4, 0 0 40px #0288d1; }
+      50% { text-shadow: 0 0 30px #00bcd4, 0 0 60px #0288d1; }
+    }
+
+    header p {
+      color: #b3e5fc;
+      font-size: 16px;
+      letter-spacing: 1px;
+      margin-bottom: 40px;
+    }
+
+    .card-panel {
+      background: linear-gradient(135deg, rgba(0, 188, 212, 0.08) 0%, rgba(2, 136, 209, 0.08) 100%) !important;
+      border: 2px solid #00bcd4 !important;
+      border-radius: 15px !important;
+      box-shadow: 0 0 30px rgba(0, 188, 212, 0.3), inset 0 0 20px rgba(0, 188, 212, 0.05) !important;
+      backdrop-filter: blur(10px);
+      padding: 30px !important;
+      animation: fadeInUp 0.6s ease;
+      transition: all 0.3s ease;
+    }
+
+    .card-panel:hover {
+      box-shadow: 0 0 40px rgba(0, 188, 212, 0.5), inset 0 0 30px rgba(0, 188, 212, 0.1) !important;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card-panel h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: #00bcd4;
+      text-shadow: 0 0 15px #00bcd4;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #00bcd4;
+      padding-bottom: 15px;
+    }
+
+    .collection {
+      background-color: rgba(15, 22, 41, 0.6) !important;
+      border: 1px solid #00bcd4 !important;
+      border-radius: 10px !important;
+      overflow: hidden;
+    }
+
+    .collection-item {
+      background-color: rgba(15, 22, 41, 0.8) !important;
+      border-bottom: 1px solid #00bcd4 !important;
+      color: #e0f7fa !important;
+      transition: all 0.3s ease;
+    }
+
+    .collection-item:hover {
+      background-color: rgba(0, 188, 212, 0.15) !important;
+      box-shadow: inset 0 0 15px rgba(0, 188, 212, 0.2);
+    }
+
+    .collection-item.active {
+      background-color: rgba(0, 188, 212, 0.25) !important;
+    }
+
+    #carrito-vacio {
+      font-size: 18px;
+      color: #b3e5fc !important;
+      padding: 40px 20px !important;
+      letter-spacing: 1px;
+    }
+
+    .striped li {
+      background-color: rgba(15, 22, 41, 0.5);
+      border-bottom: 1px solid #00bcd4;
+      color: #e0f7fa;
+      padding: 15px 10px;
+      font-size: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .striped li:hover {
+      background-color: rgba(0, 188, 212, 0.1);
+    }
+
+    .striped li strong {
+      color: #00bcd4;
+      text-shadow: 0 0 10px #00bcd4;
+      font-size: 18px;
+    }
+
+    .striped li .right {
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    #total_etiqueta {
+      color: #00bcd4 !important;
+      text-shadow: 0 0 15px #00bcd4, 0 0 30px #0288d1;
+      font-size: 20px !important;
+    }
+
+    .btn {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-radius: 50px;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      box-shadow: 0 0 15px rgba(0, 188, 212, 0.4);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 30px rgba(0, 188, 212, 0.6);
+    }
+
+    .btn.red.darken-2 {
+      background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%) !important;
+      box-shadow: 0 0 15px rgba(231, 76, 60, 0.5);
+    }
+
+    .btn.red.darken-2:hover {
+      background: linear-gradient(135deg, #c0392b 0%, #a93226 100%) !important;
+      box-shadow: 0 0 30px rgba(231, 76, 60, 0.7);
+    }
+
+    .btn.teal.darken-1 {
+      background: linear-gradient(135deg, #00bcd4 0%, #0288d1 100%) !important;
+      color: #001a33 !important;
+      box-shadow: 0 0 20px rgba(0, 188, 212, 0.5);
+    }
+
+    .btn.teal.darken-1:hover {
+      background: linear-gradient(135deg, #0288d1 0%, #0277bd 100%) !important;
+      box-shadow: 0 0 40px rgba(0, 188, 212, 0.8);
+    }
+
+    .btn.grey.lighten-2 {
+      background: linear-gradient(135deg, #37474f 0%, #263238 100%) !important;
+      color: #e0f7fa !important;
+      border: 1px solid #00bcd4;
+      box-shadow: 0 0 15px rgba(0, 188, 212, 0.3);
+    }
+
+    .btn.grey.lighten-2:hover {
+      background: linear-gradient(135deg, #263238 0%, #1a237e 100%) !important;
+      box-shadow: 0 0 25px rgba(0, 188, 212, 0.5);
+    }
+
+    .full-width {
+      width: 100%;
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .section {
+      padding-top: 20px !important;
+    }
+
+    .row {
+      margin-bottom: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+    }
+  </style>
 </head>
 
 <body class="dark">
@@ -24,22 +235,23 @@
   <!-- 🛒 Contenido principal -->
   <main class="container section">
     <header class="center-align">
-      <h1 class="teal-text text-lighten-2">
-        <i class="fas fa-shopping-basket"></i> Tu Carrito
+      <h1>
+        <i class="fas fa-shopping-basket"></i> TU CARRITO
       </h1>
-      <p class="grey-text text-lighten-1">Revisa y confirma tus productos antes de pagar.</p>
+      <p>Revisa y confirma tus productos antes de pagar.</p>
     </header>
 
     <div class="row">
       <!-- 🧾 Lista de productos -->
       <section class="col s12 m7 l8" aria-labelledby="titulo-carrito">
         <div class="card-panel glass-card z-depth-1">
-          <h2 id="titulo-carrito" class="teal-text text-lighten-3">
+          <h2 id="titulo-carrito">
             <i class="fas fa-box-open"></i> Productos en Carrito
           </h2>
           <ul id="lista-carrito" class="collection">
-            <li id="carrito-vacio" class="collection-item center-align grey-text text-lighten-2">
-              <i class="fas fa-box"></i><br>Tu carrito está vacío.
+            <li id="carrito-vacio" class="collection-item center-align">
+              <i class="fas fa-box" style="font-size: 32px; margin-bottom: 10px; display: block;"></i>
+              Tu carrito está vacío.
             </li>
           </ul>
         </div>
@@ -48,25 +260,34 @@
       <!-- 📋 Resumen del pedido -->
       <aside class="col s12 m5 l4" aria-labelledby="titulo-resumen">
         <div class="card-panel glass-card z-depth-1">
-          <h2 id="titulo-resumen" class="teal-text text-lighten-3">
+          <h2 id="titulo-resumen">
             <i class="fas fa-receipt"></i> Resumen del Pedido
           </h2>
 
-          <ul class="striped white-text">
-            <li>Subtotal <span class="right" id="resumen-subtotal">$0.00</span></li>
-            <li>IVA (16%) <span class="right" id="resumen-iva">$0.00</span></li>
-            <li><strong>Total</strong> <span class="right teal-text text-accent-1" id="total_etiqueta">$0.00</span></li>
+          <ul class="striped">
+            <li>
+              <span>Subtotal</span>
+              <span class="right" id="resumen-subtotal">$0.00</span>
+            </li>
+            <li>
+              <span>IVA (16%)</span>
+              <span class="right" id="resumen-iva">$0.00</span>
+            </li>
+            <li style="background-color: rgba(0, 188, 212, 0.2) !important;">
+              <strong style="color: #00bcd4;">TOTAL</strong>
+              <span class="right" id="total_etiqueta">$0.00</span>
+            </li>
           </ul>
 
           <div class="section">
-            <button id="vaciar-carrito" class="btn red darken-2 waves-effect waves-light full-width" style="margin-bottom: 1rem;">
-              <i class="fas fa-trash-alt left"></i> Vaciar Carrito
+            <button id="vaciar-carrito" class="btn red darken-2 waves-effect waves-light full-width">
+              <i class="fas fa-trash-alt"></i> Vaciar Carrito
             </button>
-            <button id="btnRealizarPedido" class="btn teal darken-1 waves-effect waves-light full-width" style="margin-bottom: 1rem;">
-              <i class="fas fa-credit-card left"></i> Proceder al Pago
+            <button id="btnRealizarPedido" class="btn teal darken-1 waves-effect waves-light full-width">
+              <i class="fas fa-credit-card"></i> Proceder al Pago
             </button>
-            <a href="index.html" class="btn grey lighten-2 black-text waves-effect full-width">
-              <i class="fas fa-arrow-left left"></i> Seguir Comprando
+            <a href="index.html" class="btn grey lighten-2 waves-effect full-width">
+              <i class="fas fa-arrow-left"></i> Seguir Comprando
             </a>
           </div>
         </div>

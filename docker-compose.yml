@@ -153,7 +153,7 @@ services:
     ports:
       - "3001:3000"
     environment:
-      - GF_LOG_LEVEL=warn     # 👈 Reduce verbosidad
+      GF_LOG_LEVEL: warn
     volumes:
       - grafana_data:/var/lib/grafana
     healthcheck:
@@ -181,7 +181,7 @@ services:
     image: phpmyadmin/phpmyadmin:latest
     container_name: tianguistore-phpmyadmin
     ports:
-      - "8080:80"
+      - "8181:80"
     environment:
       PMA_HOST: mysql
       PMA_PORT: 3306
@@ -210,4 +210,3 @@ volumes:
 networks:
   tianguistore-net:
     driver: bridge
-    //revisado por aldo 

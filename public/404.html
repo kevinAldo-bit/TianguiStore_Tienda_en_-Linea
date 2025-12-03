@@ -12,30 +12,127 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
   <!-- Animate.css -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" crossorigin="anonymous" />
+  <!-- Google Fonts - Fuentes modernas -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <!-- Estilos personalizados -->
   <link rel="stylesheet" href="estilo/main.css" />
+  
+  <style>
+    * {
+      font-family: 'Space Mono', monospace;
+    }
+    
+    body {
+      background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1629 100%);
+      min-height: 100vh;
+    }
+    
+    main {
+      background: rgba(15, 22, 41, 0.6);
+      border: 2px solid #00bcd4;
+      border-radius: 15px;
+      padding: 60px 40px !important;
+      box-shadow: 0 0 30px rgba(0, 188, 212, 0.3), inset 0 0 20px rgba(0, 188, 212, 0.1);
+      backdrop-filter: blur(10px);
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 30px rgba(0, 188, 212, 0.3), inset 0 0 20px rgba(0, 188, 212, 0.1); }
+      50% { box-shadow: 0 0 50px rgba(0, 188, 212, 0.5), inset 0 0 30px rgba(0, 188, 212, 0.2); }
+    }
+    
+    .icon-alert {
+      font-size: 100px;
+      color: #ff1744;
+      text-shadow: 0 0 20px #ff1744, 0 0 40px #ff1744;
+      animation: bounce 2s ease-in-out infinite;
+      margin-bottom: 30px;
+    }
+    
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    #error-title {
+      font-size: 120px !important;
+      font-weight: 900;
+      font-family: 'Orbitron', sans-serif;
+      color: #00bcd4;
+      text-shadow: 0 0 10px #00bcd4, 0 0 20px #0288d1;
+      letter-spacing: 10px;
+      margin: 20px 0;
+    }
+    
+    h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 32px;
+      color: #e0f7fa;
+      text-shadow: 0 0 10px #00bcd4;
+      letter-spacing: 3px;
+      margin-bottom: 20px;
+    }
+    
+    p {
+      color: #b3e5fc;
+      font-size: 16px;
+      line-height: 1.8;
+      margin: 20px 0;
+      text-shadow: 0 0 5px rgba(0, 188, 212, 0.3);
+    }
+    
+    .btn-large {
+      background: linear-gradient(135deg, #00bcd4 0%, #0288d1 100%) !important;
+      color: #001a33 !important;
+      font-weight: 700;
+      letter-spacing: 2px;
+      border-radius: 50px;
+      box-shadow: 0 0 15px rgba(0, 188, 212, 0.5);
+      transition: all 0.3s ease;
+      font-family: 'Orbitron', sans-serif;
+    }
+    
+    .btn-large:hover {
+      background: linear-gradient(135deg, #0288d1 0%, #0277bd 100%) !important;
+      box-shadow: 0 0 30px rgba(0, 188, 212, 0.8), 0 0 50px rgba(0, 188, 212, 0.4);
+      transform: translateY(-3px);
+    }
+    
+    .page-footer {
+      background-color: rgba(10, 14, 39, 0.8) !important;
+      border-top: 1px solid #00bcd4;
+      margin-top: auto;
+    }
+    
+    .page-footer small {
+      color: #00bcd4 !important;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+  </style>
 </head>
 
-<body class="grey darken-4 white-text d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100">
 
-  <main class="container center-align animate__animated animate__fadeIn" role="main" aria-labelledby="error-title" style="padding-top: 10vh;">
-    <i class="fas fa-exclamation-triangle fa-5x amber-text text-accent-3 mb-3" aria-hidden="true"></i>
-    <h1 class="amber-text text-accent-3" id="error-title">404</h1>
-    <h2 class="white-text">Página no encontrada</h2>
-    <p class="grey-text text-lighten-2 flow-text">
+  <main class="container center-align animate__animated animate__fadeIn" role="main" aria-labelledby="error-title" style="margin-top: 10vh;">
+    <i class="fas fa-exclamation-circle icon-alert" aria-hidden="true"></i>
+    <h1 id="error-title">404</h1>
+    <h2>RECURSO NO ENCONTRADO</h2>
+    <p>
       Lo sentimos, la página que buscas no existe o fue movida.<br>
       Intenta navegar desde el inicio o usar el menú principal.
     </p>
 
-    <a href="/index.html" class="btn-large teal lighten-1 waves-effect waves-light mt-3" aria-label="Volver al inicio">
-      <i class="fas fa-home left"></i> Ir al inicio
+    <a href="/index.html" class="btn-large waves-effect waves-light mt-3" aria-label="Volver al inicio">
+      <i class="fas fa-home left"></i> VOLVER AL INICIO
     </a>
   </main>
 
-  <!-- Footer opcional -->
-  <footer class="page-footer grey darken-3 mt-auto">
+  <!-- Footer -->
+  <footer class="page-footer mt-auto">
     <div class="container center-align">
-      <small class="grey-text text-lighten-1">TianguiStore © 2025</small>
+      <small>TianguiStore © 2025 | Sistema de alerta</small>
     </div>
   </footer>
 
