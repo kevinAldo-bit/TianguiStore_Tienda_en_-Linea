@@ -30,6 +30,8 @@ jobs:
 
         - name: Ejecutar pruebas 
         
-          run: npm test-if-present
+          run: npm test
+          continue-on-error: false
+          
 
       
